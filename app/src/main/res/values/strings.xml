@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Beatna</string>
+    <string name="Sign_in">Sign in</string>
+    <string name="Sign_up">Sign uo</string>
 </resources>
