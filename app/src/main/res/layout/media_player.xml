@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:weightSum="10"
+    >
+
+    <ImageView
+        android:id="@+id/album_pic"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/maxresdefault"
+        android:layout_weight="5"
+        android:scaleType="center"/>
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="20"
+        android:layout_marginTop="-10dp"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/album_pic"
+    android:textSize="20sp"
+    android:layout_marginTop="5dp"
+    android:text="3:30"
+
+    android:textColor="#000"
+    android:id="@+id/starttxt"/>
+
+    <TextView
+        android:id="@+id/endtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="3:30"
+        android:layout_marginStart="305dp"
+        android:textColor="#000"
+        android:textSize="20sp" />
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I'm RICH"
+            android:textSize="30sp"
+            android:textColor="#7e7d7d"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Young Tug"
+            android:textSize="20sp"
+            android:textColor="#000"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="70dp"
+            android:background="@drawable/prev"
+            android:id="@+id/prevsongbtn"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/play"
+            android:id="@+id/playpausebtn"
+            />
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="70dp"
+            android:background="@drawable/next"
+            android:id="@+id/nextsongbtn"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

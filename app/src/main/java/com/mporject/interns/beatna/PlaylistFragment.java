@@ -1,4 +1,4 @@
-package comm.example.emirc.beatnafirsttry;
+package com.mporject.interns.beatna;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

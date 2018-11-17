@@ -48,83 +48,10 @@
             android:layout_marginTop="-70dp"
             android:id="@+id/yellowcircle"
             />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Sign_in"
-        android:textSize="50sp"
-        android:textColor="#7b7777"
-        android:layout_below="@+id/bluecircle"
-        android:layout_toEndOf="@+id/redcircle"
-        android:layout_marginStart="-55dp"
-        android:id="@+id/signintxt"
-        />
-
-<EditText
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/signintxt"
-    android:layout_alignStart="@+id/bluecircle"
-    android:layout_marginTop="50dp"
-    android:hint="Login"
-    android:textColor="#000"
-    android:textColorHint="#cac3c3"
-    android:id="@+id/logininput"
-    android:background="@drawable/edittext_bottom_line"
-    />
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logininput"
-        android:layout_alignStart="@+id/bluecircle"
-        android:layout_marginTop="50dp"
-        android:hint="password"
-        android:textColor="#000"
-        android:inputType="textPassword"
-        android:textColorHint="#cac3c3"
-        android:background="@drawable/edittext_bottom_line"
-        android:id="@+id/pwdinput"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/pwdinput"
-        android:backgroundTint="#FFF"
-        android:text="Next >"
-        android:textSize="15dp"
-        android:layout_alignStart="@+id/signintxt"
-        android:textColor="#7b7777"
-        android:layout_marginTop="50dp"
-        android:id="@+id/nextbtn"
-        />
-    <Button
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/nextbtn"
-        android:background="@drawable/googleplus"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="50dp"
-        android:id="@+id/googlebtn"
-        />
-    <Button
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/nextbtn"
-        android:background="@drawable/twitter"
-        android:layout_toRightOf="@id/googlebtn"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="50dp"
-        android:id="@+id/twitterbtn"
-        />
-    <Button
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/nextbtn"
-        android:layout_toRightOf="@id/twitterbtn"
-        android:background="@drawable/facebook"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="50dp"
-        android:id="@+id/facebookbtn"
+    <FrameLayout
+        android:id="@+id/loginFragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         />
 
 </RelativeLayout>

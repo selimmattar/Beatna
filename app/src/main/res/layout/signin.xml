@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="#FFFF"
     android:id="@+id/screen"
     android:orientation="vertical"
@@ -66,56 +66,30 @@
         android:layout_below="@+id/signintxt"
         android:layout_alignStart="@+id/bluecircle"
         android:layout_marginTop="50dp"
-        android:hint="name"
+        android:hint="Login"
         android:textColor="#000"
         android:textColorHint="#cac3c3"
-        android:id="@+id/nameInput"
+        android:id="@+id/logininput"
         android:background="@drawable/edittext_bottom_line"
         />
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nameInput"
+        android:layout_below="@+id/logininput"
         android:layout_alignStart="@+id/bluecircle"
         android:layout_marginTop="50dp"
-        android:hint="email"
-        android:textColor="#000"
-        android:inputType="textEmailAddress"
-        android:textColorHint="#cac3c3"
-        android:background="@drawable/edittext_bottom_line"
-        android:id="@+id/emailInput"
-        />
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/emailInput"
-        android:layout_alignStart="@+id/bluecircle"
-        android:layout_marginTop="70dp"
         android:hint="password"
-        android:inputType="textPassword"
-        android:textColor="#000"
-        android:textColorHint="#cac3c3"
-        android:id="@+id/pwdInput"
-        android:background="@drawable/edittext_bottom_line"
-        />
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pwdInput"
-        android:layout_alignStart="@+id/bluecircle"
-        android:layout_marginTop="50dp"
-        android:hint="password confirmation"
         android:textColor="#000"
         android:inputType="textPassword"
         android:textColorHint="#cac3c3"
         android:background="@drawable/edittext_bottom_line"
-        android:id="@+id/pwdconfInput"
+        android:id="@+id/pwdinput"
         />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pwdconfInput"
-        android:layout_toRightOf="@id/pwdInput"
+        android:layout_below="@id/pwdinput"
+        android:layout_toRightOf="@id/pwdinput"
         android:backgroundTint="#FFF"
         android:text="Next >"
         android:textSize="15dp"
@@ -127,7 +101,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pwdconfInput"
+        android:layout_below="@id/pwdinput"
         android:layout_marginStart="30dp"
         android:backgroundTint="#FFF"
         android:text="Sign up"
@@ -135,7 +109,7 @@
         android:textColor="#7b7777"
         android:layout_marginTop="50dp"
         android:id="@+id/signupbtn"
-        />
+    />
 
 
 

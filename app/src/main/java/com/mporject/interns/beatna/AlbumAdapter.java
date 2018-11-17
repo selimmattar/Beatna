@@ -1,4 +1,4 @@
-package comm.example.emirc.beatnafirsttry;
+package com.mporject.interns.beatna;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -31,8 +31,8 @@ public class AlbumAdapter extends ArrayAdapter<Song> {
         LayoutInflater inflater=LayoutInflater.from(context);
         convertView= inflater.inflate(resources, null);
         TextView tvAlbumName= (TextView) convertView.findViewById(R.id.txtAlbum);
-        System.out.println(tracks.get(0).getNom());
-        tvAlbumName.setText(tracks.get(position).getNom());
+        System.out.println(tracks.get(0).gettitle());
+        tvAlbumName.setText(tracks.get(position).gettitle());
         return convertView;
     }
 }

@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/album"
     tools:context=".AlbumInterface"
     tools:layout_editor_absoluteY="25dp">
 
@@ -44,7 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAlbumName"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/groupe_de_masques_1" />
+         />
 
     <TextView
         android:id="@+id/txtTrackName"
@@ -99,7 +98,6 @@
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="25dp"
-        android:background="@drawable/rectangle_7"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationAlbum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_red_light">
 <TextView
@@ -8,5 +9,16 @@
     android:layout_height="wrap_content"
     android:text="Home Fragment"
     android:textSize="30sp"
-    android:layout_centerInParent="true"/>
+    android:layout_centerInParent="true"
+    android:id="@+id/texthome"/>
+    <com.gauravk.audiovisualizer.visualizer.BlastVisualizer
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/blast"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        custom:avDensity="0.8"
+        custom:avType="fill"
+        custom:avColor="@color/av_dark_blue"
+        custom:avSpeed="normal"
+        android:layout_below="@id/texthome"/>
 </RelativeLayout>
