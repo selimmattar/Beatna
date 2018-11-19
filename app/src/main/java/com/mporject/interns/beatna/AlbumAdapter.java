@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class AlbumAdapter extends ArrayAdapter<Song> {
+public class AlbumAdapter extends ArrayAdapter<String> {
     Context context;
-    List<Song> tracks;
+    List<String> tracks;
     int resources;
 
-    public AlbumAdapter(@NonNull Context context, int resource, @NonNull List<Song> objects)
+    public AlbumAdapter(@NonNull Context context, int resource, @NonNull List<String> objects)
     {
         super(context, resource, objects);
         this.context=context;
@@ -31,8 +31,7 @@ public class AlbumAdapter extends ArrayAdapter<Song> {
         LayoutInflater inflater=LayoutInflater.from(context);
         convertView= inflater.inflate(resources, null);
         TextView tvAlbumName= (TextView) convertView.findViewById(R.id.txtAlbum);
-        System.out.println(tracks.get(0).gettitle());
-        tvAlbumName.setText(tracks.get(position).gettitle());
+        tvAlbumName.setText(tracks.get(position).toString());
         return convertView;
     }
 }
