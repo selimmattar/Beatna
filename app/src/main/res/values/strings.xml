@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Beatna</string>
     <string name="Sign_in">Sign in</string>
-    <string name="Sign_up">Sign uo</string>
+    <string name="Sign_up">Sign up</string>
     <string name="home">Home</string>
     <string name="favs">favorites</string>
     <string name="playlists">playlists</string>

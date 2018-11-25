@@ -48,7 +48,7 @@ public class PlaylistFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        myAPI=SignInFragment.Companion.getRetrofit().create(NodeJS.class);
+        myAPI=MainActivity.Companion.getRetrofit().create(NodeJS.class);
         final ListView listALbum=(ListView) view.findViewById(R.id.listTracks);
         final ArrayList<String> album=new ArrayList<>();
         compositeDisposable.add(myAPI.displaySongs()

@@ -13,6 +13,22 @@ interface NodeJS {
     @FormUrlEncoded
     fun loginUser(@Field("email")email:String,@Field("password")password:String) : Observable<String>
 
+    @POST("register")
+    @FormUrlEncoded
+    fun registerUser(@Field("name")name:String,@Field("email")email:String,@Field("password")password:String) : Observable<String>
+
+    @POST("post_getAll")
+    fun post_getAll() : Observable<String>
+
     @POST("displaySongs")
     fun displaySongs() : Observable<String>
+
+    @POST("user_getByUid")
+    @FormUrlEncoded
+    fun getUserByUid(@Field("uid")uid:String):Observable<String>
+
+    @POST("song_getById")
+    @FormUrlEncoded
+    fun getSongById(@Field("id")id:Int):Observable<String>
+
 }

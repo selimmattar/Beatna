@@ -22,8 +22,7 @@ class SignInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val retrofit =RetrofitClient.getInstance()
-        myAPI= retrofit?.create(NodeJS::class.java)
+        myAPI= MainActivity.retrofit?.create(NodeJS::class.java)
         val nextbtn = view!!.findViewById<Button>(R.id.nextbtn)
         val signupbtn=view!!.findViewById<Button>(R.id.signupbtn)
         val login_et=view!!.findViewById<EditText>(R.id.logininput)
@@ -44,9 +43,11 @@ class SignInFragment : Fragment() {
                 .subscribe{
                     Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
                     val intent= Intent(activity,MainActivity::class.java)
-                    startActivity(intent);
+                    startActivity(intent)
+
                 }
         )
+
     }
 
 

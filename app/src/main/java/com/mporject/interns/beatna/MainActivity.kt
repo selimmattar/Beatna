@@ -8,11 +8,14 @@ import android.support.v4.app.Fragment
 
 
 class MainActivity : AppCompatActivity() {
-
+companion object {
+    val retrofit =RetrofitClient.getInstance()
+}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+        supportFragmentManager.beginTransaction().add(R.id.fragment_container,HomeFragment()).commit()
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setOnNavigationItemSelectedListener(navListener)
     }
