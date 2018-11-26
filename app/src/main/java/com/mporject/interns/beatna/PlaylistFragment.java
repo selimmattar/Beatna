@@ -36,17 +36,21 @@ public class PlaylistFragment extends Fragment {
     private NodeJS myAPI;
     private CompositeDisposable compositeDisposable= new CompositeDisposable();
     List<Song> list;
-
+    TextView txtNameAlbum;
+    TextView txtArtistName;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.album_interface,container,false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        txtNameAlbum=(TextView) getView().findViewById(R.id.txtAlbumName);
+        txtArtistName=(TextView) getView().findViewById(R.id.txtTrackName);
 
         myAPI=MainActivity.Companion.getRetrofit().create(NodeJS.class);
         final ListView listALbum=(ListView) view.findViewById(R.id.listTracks);
@@ -57,30 +61,6 @@ public class PlaylistFragment extends Fragment {
                 .subscribe(new Consumer<String>() {
                   @Override
                     public void accept(String s) throws JSONException {
-                      /*  String[] sWthtComma=s.split("\\,");
-                        //System.out.println("cuts0="+cutS[0]);
-                       // System.out.println("cuts1="+cutS[1]);
-                        //System.out.println("cuts2="+cutS[2]);
-                        //System.out.println("cuts3="+cutS[3]);
-                      Song firstSongInList = new Song();
-
-                      String firstsongTitle=sWthtComma[0].substring(1);
-                      String lastsongTile=sWthtComma[sWthtComma.length].substring(0,sWthtComma[sWthtComma.length].length()-1);
-
-                      firstSongInList.settitle(firstsongTitle);
-                      album.add(firstSongInList);
-                      for(int i=1;i<sWthtComma.length-2;i++) {
-                          System.out.println("s=" + s);
-                          Song song1 = new Song();
-                          song1.settitle(sWthtComma[i]);
-                          album.add(song1);
-                          AlbumAdapter adapter = new AlbumAdapter(getActivity(), R.layout.list_album, album);
-                          listALbum.setAdapter(adapter);
-                      }
-                      Song lastSongInList = new Song();
-                      firstSongInList.settitle(lastsongTile);
-                      album.add(lastSongInList);*/
-
                       final JSONArray geodata = new JSONArray(s);
                       final int n = geodata.length();
                       for (int i = 0; i < n; ++i) {
@@ -94,6 +74,23 @@ public class PlaylistFragment extends Fragment {
                   }
 
                 }));
+        compositeDisposable.add(myAPI.getAlbumInfo()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws JSONException {
+                        final JSONArray geodata = new JSONArray(s);
+                        final int n = geodata.length();
+                        for (int i = 0; i < n; ++i) {
+                            final JSONObject infos = geodata.getJSONObject(i);
+                            txtArtistName.setText(infos.getString("name"));
+                            txtNameAlbum.setText(infos.getString("title"));
+                        }
+                    }
+
+                }));
+
 
     }
 

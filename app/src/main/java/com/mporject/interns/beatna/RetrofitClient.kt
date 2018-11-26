@@ -6,14 +6,14 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 
 class RetrofitClient {
     companion object {
-      private var instance: Retrofit? = null
+        private  var instance: Retrofit? = null
 
-        fun getInstance() : Retrofit?{
-        instance= if (instance==null) Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/")//localhost for android 10.0.2.2
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build() else null
+        fun GetInstance() : Retrofit?{
+            instance= if (instance==null) Retrofit.Builder()
+                    .baseUrl("http://10.0.2.2:3000/")//localhost for android 10.0.2.2
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .build() else null
             return instance
         }
     }
