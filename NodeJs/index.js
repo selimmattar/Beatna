@@ -139,6 +139,35 @@ app.post('/post_getAll/',(req,res,next)=>{
   });
 })
 
+//Display Songs
+app.post('/displaySongs/',(req,res,next)=>{
+  var post_data=req.body;
+  var id=[];
+  var title=[];
+  var album=[];
+  var artist =[];
+   con.query('SELECT * FROM song',function(err,result,fields){
+    con.on('error',function(err){
+      console.log('[MySQL ERROR]',err);
+    });
+    if(result && result.length)
+     {
+      for(var i= 0; i < result.length; i++)
+      {
+      //var resultat[i]=
+      id[i]=result[i].id;
+      title[i]=result[i].title;
+      album[i]=result[i].album;
+      artist[i]=result[i].artist;
+      }
+        console.log(JSON.stringify(result));
+        res.end(JSON.stringify(result));
+      
+     }
+    else res.json("No songs");
+  });
+})
+
 app.get('/',(req,res,next)=>{
   console.log('Password:123456');
   var encrypt=saltHashPassword("123456");

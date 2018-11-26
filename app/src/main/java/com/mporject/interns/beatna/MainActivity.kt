@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment
 
 class MainActivity : AppCompatActivity() {
 companion object {
-    val retrofit =RetrofitClient.getInstance()
+    val retrofit =RetrofitClient.GetInstance()
 }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

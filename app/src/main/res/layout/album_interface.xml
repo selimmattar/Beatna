@@ -14,18 +14,17 @@
         android:id="@+id/txtAlbumName"
         android:layout_width="195dp"
         android:layout_height="46dp"
-        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="19dp"
         android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
         android:layout_marginTop="12dp"
-        android:text="Troye Sivan"
+        android:textColor="#000"
         app:layout_constraintEnd_toStartOf="@+id/txtTrackName"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="#000"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
@@ -56,11 +55,10 @@
         android:layout_alignTop="@+id/imgAlbum"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:text="Blue Neighbourhood"
+        android:textColor="#000"
         app:layout_constraintBottom_toTopOf="@+id/txtDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgAlbum"
-        android:textColor="#000"/>
+        app:layout_constraintStart_toEndOf="@+id/imgAlbum" />
 
     <TextView
         android:id="@+id/txtDate"
