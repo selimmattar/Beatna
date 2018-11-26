@@ -1,11 +1,8 @@
 package com.mporject.interns.beatna;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
@@ -20,37 +17,12 @@ public class AlbumInterface extends AppCompatActivity {
         setContentView(R.layout.album_interface);
 
         ListView listALbum=(ListView) findViewById(R.id.listTracks);
-        ArrayList<Song> album=new ArrayList<>();
+        ArrayList<String> album=new ArrayList<>();
 
 
-        AlbumAdapter adapter = new AlbumAdapter(this, R.layout.list_album, album);
+        AlbumAdapter adapter = new AlbumAdapter(this, R.layout.list_album,album);
         listALbum.setAdapter(adapter);
-
-        BottomNavigationView bottomNav=findViewById(R.id.bottomNavigationAlbum);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
 
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener= new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            Fragment selectedFragment=null;
-            switch (menuItem.getItemId()){
-                case R.id.nav_home:
-                    selectedFragment=new HomeFragment();
-                    break;
-                case R.id.nav_favs:
-                    selectedFragment=new FavoritesFragment();
-                    break;
-                case R.id.nav_playlist:
-                    selectedFragment=new PlaylistFragment();
-                    break;
-                case R.id.nav_profile:
-                    selectedFragment=new ProfileFragment();
-                    break;
-            }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
-            return true;
-        }
-    };
 }

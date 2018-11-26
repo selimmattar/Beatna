@@ -41,9 +41,12 @@ class SignInFragment : Fragment() {
         !!.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe{
-                    Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
-                    val intent= Intent(activity,MainActivity::class.java)
-                    startActivity(intent)
+                    val intent = Intent(activity, MainActivity::class.java)
+
+                  if(!(it.equals("Wrong password") || it.equals("User non existant"))) {
+                      startActivity(intent)
+                  }
+                    else  Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
 
                 }
         )
