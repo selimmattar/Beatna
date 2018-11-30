@@ -3,29 +3,23 @@
     >
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/home_off"
-        android:title="@string/home"
-        android:iconTint="@android:color/white"
-
+        android:icon="@drawable/home_tinted"
+        android:title=""
         />
     <item
         android:id="@+id/nav_favs"
-        android:icon="@drawable/heart_off"
-        android:title="@string/favs"
-        android:iconTint="@android:color/white"
+        android:icon="@drawable/heart_tinted"
+        android:title=""
         />
     <item
         android:id="@+id/nav_playlist"
-    android:icon="@drawable/playlist_off"
-    android:title="@string/playlists"
-        android:iconTint="@android:color/white"
-
+    android:icon="@drawable/playlitst_tinted"
+        android:title=""
         />
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/profile_off"
-        android:title="@string/profile"
-        android:iconTint="@android:color/white"
+        android:icon="@drawable/profile_tinted"
+        android:title=""
         />
 
 </menu>

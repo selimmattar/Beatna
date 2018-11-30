@@ -19,6 +19,6 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     app:menu="@menu/menu_navigation"
-    android:background="#afadad"
+    android:background="@color/whityWhite"
     />
 </RelativeLayout>
