@@ -14,31 +14,82 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:background="#FFFFFF">
-        <ImageButton
-            android:id="@+id/song_imgbtn"
+        <ImageView
+            android:id="@+id/song_imgv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="#d9d5d5"
+            />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:alpha="0.8"
+            android:src="@drawable/shadow" />
+        <TextView
+            android:id="@+id/songname_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/song_imgv"
+            android:layout_alignParentStart="@+id/song_imgv"
+            android:layout_marginStart="5dp"
+            android:text="song name"
+            android:textColor="#FFF"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/albumname_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/songname_tv"
+            android:layout_alignParentStart="@+id/song_imgv"
+            android:layout_marginStart="15dp"
+            android:text="album name"
+            android:textColor="#bebbbb"
+            android:textSize="10dp" />
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/play_post"
+            android:alpha="0.4"
+            android:id="@+id/playpost_imgb"/>
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitCenter"
+            android:layout_toLeftOf="@id/playpost_imgb"
+            android:layout_alignTop="@id/playpost_imgb"
+            android:layout_marginEnd="20dp"
+            android:alpha="0.3"
+            android:background="@drawable/love_post"
+            android:id="@+id/lovepost_imgb"
+            />
+<ImageButton
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:layout_toRightOf="@id/playpost_imgb"
+    android:layout_alignTop="@id/playpost_imgb"
+    android:layout_marginStart="20dp"
+    android:scaleType="fitCenter"
+    android:alpha="0.3"
+    android:background="@drawable/share_post"
+    android:id="@+id/sharepost_imgb"/>
         <ImageView
             android:id="@+id/profile_img"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignBottom="@id/song_imgbtn"
-            android:layout_marginTop="10dp"
+            android:layout_alignStart="@id/song_imgv"
+            android:layout_alignBottom="@id/song_imgv"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
             android:src="@drawable/blue_circle" />
-
-        <TextView
-            android:id="@+id/createdAt_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/username_tv"
-            android:layout_alignStart="@+id/username_tv"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="-10dp"
-            android:layout_marginBottom="-8dp"
-            android:text="created_at"
-            android:textColor="#918c8c"
-            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/username_tv"
@@ -51,38 +102,22 @@
             android:text="aaa"
             android:textColor="#ccc7c7"
             android:textSize="30sp" />
+        <TextView
+            android:id="@+id/createdAt_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/username_tv"
+            android:layout_alignStart="@+id/username_tv"
+            android:layout_marginTop="-8dp"
+            android:layout_marginBottom="-8dp"
+            android:text="created_at"
+            android:textColor="#918c8c"
+            android:textSize="10sp" />
 
 
 
 
-            <TextView
-                android:id="@+id/songname_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/song_imgbtn"
-                android:layout_toEndOf="@+id/song_imgbtn"
-                android:text="song name"
-                android:textColor="#000"
-                android:textSize="25dp" />
-
-            <TextView
-                android:id="@+id/albumname_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/songname_tv"
-                android:layout_toEndOf="@+id/song_imgbtn"
-                android:text="album name"
-                android:textColor="#000"
-                android:textSize="20dp" />
 
 
-        <Button
-            android:id="@+id/like_btn"
-            android:layout_width="60dp"
-            android:layout_height="36dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
-            android:text="j'aime" />
     </RelativeLayout>
 </RelativeLayout>

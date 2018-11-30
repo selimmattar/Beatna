@@ -24,16 +24,13 @@ import io.reactivex.schedulers.Schedulers;
 
 
 public class HomeFragment extends Fragment {
-    ArrayList<Post> news=new ArrayList<>();
-    ListView  news_lv;
-    PostAdapter PA;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View myView=inflater.inflate(R.layout.newsfeed_fragment,container,false);
 
 
-        news_lv=myView.findViewById(R.id.news_lv);
         NodeJS myAPI=MainActivity.Companion.getRetrofit().create(NodeJS.class);
         CompositeDisposable CD = new CompositeDisposable();
         CD.add(myAPI.post_getAll()
@@ -47,6 +44,10 @@ public class HomeFragment extends Fragment {
                         User poster;
                         Album album_p;
                         Song song_p;
+                        ArrayList<Post> news=new ArrayList<>();
+                        ListView  news_lv;
+                        PostAdapter PA;
+                        news_lv=myView.findViewById(R.id.news_lv);
                         for (int i = 0; i < n; ++i) {
                             JSONObject post=posts_data.getJSONObject(i);
                             poster=new User(post.getString("unique_id"),post.getString("name"),post.getString("email"),post.getInt("role"));
@@ -74,10 +75,8 @@ public class HomeFragment extends Fragment {
 
 
     }
-
     @Override
     public void onDestroyView() {
-
         super.onDestroyView();
     }
 }
