@@ -67,6 +67,7 @@
         android:layout_alignStart="@+id/bluecircle"
         android:layout_marginTop="50dp"
         android:hint="Login"
+        android:inputType="textEmailAddress"
         android:textColor="#000"
         android:textColorHint="#cac3c3"
         android:id="@+id/logininput"

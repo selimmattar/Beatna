@@ -8,7 +8,7 @@
     >
 
     <ImageView
-        android:id="@+id/album_pic"
+        android:id="@+id/song_mp_iv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:src="@drawable/maxresdefault"
@@ -58,13 +58,15 @@
             android:layout_height="wrap_content"
             android:text="I'm RICH"
             android:textSize="30sp"
-            android:textColor="#7e7d7d"/>
+            android:textColor="#7e7d7d"
+            android:id="@+id/songname_mp_tv"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Young Tug"
             android:textSize="20sp"
-            android:textColor="#000"/>
+            android:textColor="#000"
+            android:id="@+id/artistname_mp_tv"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

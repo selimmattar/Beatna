@@ -6,10 +6,10 @@ import io.reactivex.schedulers.Schedulers
 import org.json.JSONArray
 import org.json.JSONObject
 
-class Song {
-     var title: String? = ""
+class Song(var title: String) {
+
     companion object {
-        val song =Song()
+        val song =Song("")
                 fun getSongById(id:Int){
 
                     val myAPI : NodeJS

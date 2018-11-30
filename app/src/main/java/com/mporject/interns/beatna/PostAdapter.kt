@@ -2,16 +2,19 @@ package com.mporject.interns.beatna
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
-import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
 import android.support.v7.app.AppCompatActivity
+import android.graphics.BitmapFactory
+import android.graphics.Bitmap
+import android.widget.ImageView
+import java.net.URL
+import com.squareup.picasso.Picasso
+
 
 
 
@@ -26,11 +29,17 @@ class PostAdapter(context: Context, resource: Int, objects: MutableList<Post>) :
 
 
 
-        view?.findViewById<TextView>(R.id.artistname_tv)?.text=getItem(position).username
-        view?.findViewById<TextView>(R.id.songname_tv)?.text=getItem(position).songname
+        view?.findViewById<TextView>(R.id.username_tv)?.text=getItem(position).poster.name
+        view?.findViewById<TextView>(R.id.songname_tv)?.text=getItem(position).song.title
+       val profile_pic=view?.findViewById<ImageView>(R.id.profile_img)
+        val song_pic=view?.findViewById<ImageButton>(R.id.song_imgbtn)
+        val imageUri = "http://10.0.2.2/Server/"+getItem(position).poster.name+"/photo.jpg"
+        val SongimageUri = "http://10.0.2.2/Server/"+getItem(position).poster.name+"/Singles/albumPhoto.png"
+        Picasso.with(context).load(imageUri).transform(CircleTransform()).into(profile_pic)
+        Picasso.with(context).load(SongimageUri).into(song_pic)
         view?.findViewById<ImageButton>(R.id.song_imgbtn)!!.setOnClickListener{
         val bundle=Bundle()
-            bundle.putString("song_name",getItem(position).songname)
+            bundle.putString("song_name",getItem(position).song.title)
 
             val SF=SongFragment()
             SF.arguments=bundle

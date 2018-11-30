@@ -1,48 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#FFF"
+    android:layout_height="185dp"
     android:outlineAmbientShadowColor="@color/av_dark_blue"
-    android:backgroundTint="#eae7e7"
+    android:layout_marginBottom="10dp"
+    android:background="#eae8e8"
     >
-<ImageView
-    android:layout_width="50dp"
-    android:layout_height="50dp"
-    android:src="@drawable/blue_circle"
-    android:id="@+id/profile_img"
-    />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="aaa"
-        android:textColor="#766c6c"
-        android:layout_marginStart="20dp"
-        android:layout_toEndOf="@id/profile_img"
-        android:id="@+id/artistname_tv"
-        />
-    <ImageButton
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_below="@+id/profile_img"
-        android:id="@+id/album_imgbtn"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/album_imgbtn"
-        android:layout_below="@id/profile_img"
-        android:textSize="50dp"
-        android:text="aaaa"
-        android:id="@+id/songname_tv"
-        android:textColor="#000"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/album_imgbtn"
-        android:text="jaime"
-        android:id="@+id/like_btn"
-        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="#FFFFFF">
+        <ImageButton
+            android:id="@+id/song_imgbtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/profile_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@id/song_imgbtn"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/blue_circle" />
+
+        <TextView
+            android:id="@+id/createdAt_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/username_tv"
+            android:layout_alignStart="@+id/username_tv"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-8dp"
+            android:text="created_at"
+            android:textColor="#918c8c"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/username_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="-10dp"
+            android:layout_toEndOf="@id/profile_img"
+            android:layout_alignTop="@id/profile_img"
+            android:text="aaa"
+            android:textColor="#ccc7c7"
+            android:textSize="30sp" />
+
+
+
+
+            <TextView
+                android:id="@+id/songname_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/song_imgbtn"
+                android:layout_toEndOf="@+id/song_imgbtn"
+                android:text="song name"
+                android:textColor="#000"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/albumname_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/songname_tv"
+                android:layout_toEndOf="@+id/song_imgbtn"
+                android:text="album name"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+
+        <Button
+            android:id="@+id/like_btn"
+            android:layout_width="60dp"
+            android:layout_height="36dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:text="j'aime" />
+    </RelativeLayout>
 </RelativeLayout>

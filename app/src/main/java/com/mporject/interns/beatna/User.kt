@@ -7,15 +7,16 @@ import io.reactivex.schedulers.Schedulers
 import org.json.JSONArray
 import org.json.JSONObject
 
-class User {
-      var  uid :String=""
-     var name :String=""
-     var email :String=""
-     var role :Int =0
-     companion object {
-          val user=User()
-         fun getUserByUid(uid:String){
+class User(var uid: String,  var name :String, var email :String, var role :Int  ) {
 
+
+
+
+
+     companion object {
+
+         fun getUserByUid(uid:String):User{
+           var user=User("","","",0)
              val myAPI : NodeJS
              val  CD = CompositeDisposable()
              myAPI=MainActivity.retrofit!!.create(NodeJS::class.java)
@@ -32,7 +33,7 @@ class User {
 
 
                      })
-
+            return user
          }
      }
 

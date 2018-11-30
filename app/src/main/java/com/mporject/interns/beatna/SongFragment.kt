@@ -26,7 +26,7 @@ class SongFragment : Fragment() {
         val PlayPause_btn=myView.findViewById<Button>(R.id.playpausebtn)
         PlayPause_btn.setOnClickListener{
             try {
-                mp.setDataSource("http://10.0.2.2/Server/ArtistNu1/AlbumNu1/Bratia Stereo - Ayayay (ft. Tony Tonite).mp3")
+                mp.setDataSource("http://10.0.2.2/Server/selim/AlbumNu1/Bratia Stereo - Ayayay (ft. Tony Tonite).mp3")
                 mp.prepare()
                 mp.start()
 

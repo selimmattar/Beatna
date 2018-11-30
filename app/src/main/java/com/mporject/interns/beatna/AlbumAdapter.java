@@ -1,8 +1,12 @@
 package com.mporject.interns.beatna;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +35,19 @@ public class AlbumAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater=LayoutInflater.from(context);
         convertView= inflater.inflate(resources, null);
         TextView tvAlbumName= (TextView) convertView.findViewById(R.id.txtAlbum);
-        tvAlbumName.setText(tracks.get(position).toString());
+        tvAlbumName.setText(tracks.get(position));
+
+        tvAlbumName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            SongFragment SF=new SongFragment();
+                Bundle bundle=new Bundle();
+                bundle.putString("song_name",tracks.get(position));
+                SF.setArguments(bundle);
+                FragmentManager manager=((AppCompatActivity) context).getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.fragment_container,SF).addToBackStack(null).commit();
+            }
+        });
         return convertView;
     }
 }
