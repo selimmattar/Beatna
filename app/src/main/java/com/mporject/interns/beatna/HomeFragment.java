@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
                         for (int i = 0; i < n; ++i) {
                             JSONObject post=posts_data.getJSONObject(i);
                             poster=new User(post.getString("unique_id"),post.getString("name"),post.getString("email"),post.getInt("role"));
-                            song_p= new Song(post.getString("title"));
+                            song_p= new Song(post.getInt("song_id"),post.getString("title"),poster);
                             news.add(new Post(poster,song_p,post.getString("created_at")));
                             //   Toast.makeText(getContext(),post.getString("artist"),Toast.LENGTH_SHORT).show();
                         }

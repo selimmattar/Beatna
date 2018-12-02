@@ -14,21 +14,18 @@ import android.graphics.Bitmap
 import android.widget.ImageView
 import java.net.URL
 import com.squareup.picasso.Picasso
-
-
+import io.reactivex.disposables.CompositeDisposable
 
 
 class PostAdapter(context: Context, resource: Int, objects: MutableList<Post>) : ArrayAdapter<Post>(context, resource, objects) {
-
+    val myAPI = MainActivity.retrofit!!.create(NodeJS::class.java)
+    val CD = CompositeDisposable()
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view :View?=null
 
         val inflater = LayoutInflater.from(context)
 
         view=inflater?.inflate(R.layout.newsfeed_item,parent,false)
-
-
-
         view?.findViewById<TextView>(R.id.username_tv)?.text=getItem(position).poster.name
         view?.findViewById<TextView>(R.id.songname_tv)?.text=getItem(position).song.title
        val profile_pic=view?.findViewById<ImageView>(R.id.profile_img)
@@ -40,15 +37,22 @@ class PostAdapter(context: Context, resource: Int, objects: MutableList<Post>) :
         view?.findViewById<ImageButton>(R.id.playpost_imgb)!!.setOnClickListener{
         val bundle=Bundle()
             bundle.putString("song_name",getItem(position).song.title)
+            val songs=ArrayList<Song>()
+            val song_titles=ArrayList<String>()
+            val song_ids=ArrayList<String>()
+            val artist_uid=ArrayList<String>()
+            val artist_name=ArrayList<String>()
 
-            val SF=SongFragment()
-            SF.arguments=bundle
+            val MPF=MediaPlayerFragment()
+            MPF.arguments=bundle
             val manager = (context as AppCompatActivity).supportFragmentManager
 
-            manager.beginTransaction().replace(R.id.fragment_container,SF!!).addToBackStack(null).commit()
+            manager.beginTransaction().replace(R.id.fragment_container,MPF!!).addToBackStack(null).commit()
         }
         return view!!
     }
+private fun  getAlbumSongs(id:Int){
 
+}
 
 }

@@ -71,7 +71,7 @@
             android:background="@drawable/love_post"
             android:id="@+id/lovepost_imgb"
             />
-<ImageButton
+   <ImageButton
     android:layout_width="40dp"
     android:layout_height="40dp"
     android:layout_toRightOf="@id/playpost_imgb"

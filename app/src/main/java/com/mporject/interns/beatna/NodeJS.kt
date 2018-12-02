@@ -34,4 +34,8 @@ interface NodeJS {
     @POST("getAlbumInfo")
     fun getAlbumInfo() : Observable<String>
 
+    @POST("/AlbumSongs_getBySongId")
+    @FormUrlEncoded
+    fun getAlbumSongsBySongId(@Field("id")id:Int):Observable<String>
+
 }
