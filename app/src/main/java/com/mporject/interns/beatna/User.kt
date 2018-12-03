@@ -1,18 +1,12 @@
 package com.mporject.interns.beatna
 
-import android.widget.Toast
-import io.reactivex.android.schedulers.AndroidSchedulers
+
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import org.json.JSONArray
 import org.json.JSONObject
 
 class User(var uid: String,  var name :String, var email :String, var role :Int  ) {
 
-fun User(uid: String,name :String) {
-    this.uid=uid;
-    this.name=name
-}
 
 
     companion object {
