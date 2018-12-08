@@ -1,6 +1,5 @@
 package com.mporject.interns.beatna
 
-import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
@@ -9,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import java.io.IOException
-import android.support.v4.os.HandlerCompat.postDelayed
 import android.widget.*
 import com.marcinmoskala.arcseekbar.ArcSeekBar
 import com.marcinmoskala.arcseekbar.ProgressListener
@@ -23,9 +21,12 @@ class MediaPlayerFragment : Fragment() {
    var  mpIsEmpty=false
     var mp_length=mp.currentPosition
     var handler = Handler()
-    lateinit var runnable: Runnable
+    var mySeekBar: ArcSeekBar? = null
+      lateinit var runnable:Runnable
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        Toast.makeText(context,""+mp.currentPosition,Toast.LENGTH_LONG).show()
+
         val song_ids=arguments!!.getIntegerArrayList("song_ids")
         val song_titles=arguments!!.getStringArrayList("song_titles")
         val artist_uids=arguments!!.getStringArrayList("artist_uids")
@@ -34,7 +35,12 @@ class MediaPlayerFragment : Fragment() {
             playlist.add(Song(song_ids.get(i),song_titles.get(i),User(artist_uids.get(i),artist_names.get(i),"",1)))
         currentIndex=arguments!!.getInt("currentIndex")
         album_title=arguments!!.getString("album_title")
+        runnable = Runnable {
+            mySeekBar?.progress=mp.currentPosition
+            handler.postDelayed(runnable,1000)
+        }
         return inflater.inflate(R.layout.media_player,container,false)
+
 
     }
 
@@ -47,20 +53,16 @@ class MediaPlayerFragment : Fragment() {
                 album_title+"/"+playlist.get(currentIndex).title+".mp3")
         mp.prepare()
         mp.start()
+        handler.postDelayed(runnable,1000)
+         mySeekBar=myView.findViewById<ArcSeekBar>(R.id.seekArc)
+     
+        mySeekBar!!.maxProgress=mp.duration
 
-        val mySeekBar=myView.findViewById<ArcSeekBar>(R.id.seekArc)
-        mySeekBar.maxProgress=mp.duration
-        Toast.makeText(context,""+mySeekBar.maxProgress,Toast.LENGTH_LONG).show()
-      mySeekBar.onProgressChangedListener= ProgressListener {
+      mySeekBar!!.onStopTrackingTouch= ProgressListener {
           mp.seekTo(it)
       }
-        runnable = object : Runnable{
-            override fun run() {
-                mySeekBar.progress=mp.currentPosition
-                handler.postDelayed(this,0)
-            }
 
-        }
+
 
         val PlayPause_btn=myView.findViewById<ImageButton>(R.id.play_imgb)
         PlayPause_btn.setOnClickListener{
@@ -77,7 +79,7 @@ class MediaPlayerFragment : Fragment() {
                         mp.prepareAsync()
                         mp.start()
                         mpIsEmpty=false
-                        handler.postDelayed(runnable,0)
+
                     } catch (e: IOException) {
                         e.printStackTrace()
                     }
