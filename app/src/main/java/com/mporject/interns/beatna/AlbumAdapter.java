@@ -34,10 +34,15 @@ public class AlbumAdapter extends ArrayAdapter<String> {
     {
         LayoutInflater inflater=LayoutInflater.from(context);
         convertView= inflater.inflate(resources, null);
-        TextView tvAlbumName= (TextView) convertView.findViewById(R.id.txtAlbum);
-        tvAlbumName.setText(tracks.get(position));
+        TextView tvAlbumName=convertView.findViewById(R.id.txtAlbum);
+        TextView tvOrder= convertView.findViewById(R.id.txtOrder);
+        TextView tvMinutes= convertView.findViewById(R.id.txtMinutes);
 
-        tvAlbumName.setOnClickListener(new View.OnClickListener() {
+        tvAlbumName.setText(tracks.get(position));
+        tvOrder.setText(""+(position+1));
+        tvMinutes.setText("2:16");
+
+       /* tvAlbumName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             SongFragment SF=new SongFragment();
@@ -48,6 +53,7 @@ public class AlbumAdapter extends ArrayAdapter<String> {
                 manager.beginTransaction().replace(R.id.fragment_container,SF).addToBackStack(null).commit();
             }
         });
+        */
         return convertView;
     }
 }

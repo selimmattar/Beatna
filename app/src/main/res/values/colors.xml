@@ -6,4 +6,11 @@
     <color name="whityWhite">#ffffff</color>
     <color name="greyyy">#686868</color>
     <color name="color_action_icons_tint">#b12051</color>
+    <color name="startblue">#07acde</color>
+    <color name="graylight">#FF8F8D8D</color>
+    <color name="color1">#424549</color>
+    <color name="color2">#7e455e</color>
+    <color name="color3">#796e25</color>
+    <color name="color4">#59717c</color>
+
 </resources>

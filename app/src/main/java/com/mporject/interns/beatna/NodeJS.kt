@@ -38,4 +38,23 @@ interface NodeJS {
     @FormUrlEncoded
     fun getAlbumSongsBySongId(@Field("id")id:Int):Observable<String>
 
+    @POST("getUserFollowers")
+    @FormUrlEncoded
+    fun getUserFollowers(@Field("id")id:String):Observable<String>
+
+    @POST("getUserFollowed")
+    @FormUrlEncoded
+    fun getUserFollowed(@Field("id")id:String):Observable<String>
+
+    @POST("getPostByIdUser")
+    @FormUrlEncoded
+    fun getPostByIdUser(@Field("id")id:String):Observable<String>
+
+    @POST("getUserFavs")
+    @FormUrlEncoded
+    fun getUserFavs(@Field("id")id:String):Observable<String>
+
+    @POST("getMoodPlaylist")
+    @FormUrlEncoded
+    fun getMoodPlaylist(@Field("mood")mood:String):Observable<String>
 }
