@@ -40,8 +40,6 @@ class MediaPlayerFragment : Fragment() {
             handler.postDelayed(runnable,1000)
         }
         return inflater.inflate(R.layout.media_player,container,false)
-
-
     }
 
 
@@ -62,7 +60,16 @@ class MediaPlayerFragment : Fragment() {
           mp.seekTo(it)
       }
 
-
+        mp.setOnCompletionListener {
+            if(currentIndex==playlist.size-1)
+                currentIndex=0
+            else currentIndex++
+            mp.stop()
+            mp.reset()
+            myView.findViewById<TextView>(R.id.songname_mp_tv).text=playlist.get(currentIndex).title
+            myView.findViewById<TextView>(R.id.artistname_mp_tv).text=playlist.get(currentIndex).artist.name
+            playSong()
+        }
 
         val PlayPause_btn=myView.findViewById<ImageButton>(R.id.play_imgb)
         PlayPause_btn.setOnClickListener{
@@ -71,14 +78,7 @@ class MediaPlayerFragment : Fragment() {
                 PlayPause_btn.setBackgroundResource(R.drawable.pause)
                 if(mpIsEmpty){
                     try {
-
-                        if(album_title.equals(""))
-                            album_title="Singles"
-                        mp.setDataSource("http://10.0.2.2/Server/"+playlist.get(currentIndex).artist.name+"/"+
-                                album_title+"/"+playlist.get(currentIndex).title+".mp3")
-                        mp.prepareAsync()
-                        mp.start()
-                        mpIsEmpty=false
+                        playSong()
 
                     } catch (e: IOException) {
                         e.printStackTrace()
@@ -104,6 +104,8 @@ class MediaPlayerFragment : Fragment() {
             mp.stop()
             mp.reset()
             mpIsEmpty=true
+            handler.removeCallbacks(runnable)
+            PlayPause_btn.setBackgroundResource(R.drawable.play)
             myView.findViewById<TextView>(R.id.songname_mp_tv).text=playlist.get(currentIndex).title
             myView.findViewById<TextView>(R.id.artistname_mp_tv).text=playlist.get(currentIndex).artist.name
         }
@@ -116,8 +118,22 @@ class MediaPlayerFragment : Fragment() {
             mp.stop()
             mp.reset()
             mpIsEmpty=true
+            PlayPause_btn.setBackgroundResource(R.drawable.play)
             myView.findViewById<TextView>(R.id.songname_mp_tv).text=playlist.get(currentIndex).title
             myView.findViewById<TextView>(R.id.artistname_mp_tv).text=playlist.get(currentIndex).artist.name
+        }
+    }
+    fun playSong(){
+        if(album_title.equals(""))
+            album_title="Singles"
+        mp.setDataSource("http://10.0.2.2/Server/"+playlist.get(currentIndex).artist.name+"/"+
+                album_title+"/"+playlist.get(currentIndex).title+".mp3")
+        mp.prepareAsync()
+        mp.setOnPreparedListener {
+            it.start()
+            mySeekBar!!.maxProgress=mp.duration
+            handler.postDelayed(runnable,1000)
+            mpIsEmpty=false
         }
     }
 }
