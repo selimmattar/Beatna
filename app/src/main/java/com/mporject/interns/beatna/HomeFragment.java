@@ -10,12 +10,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -25,6 +28,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class HomeFragment extends Fragment {
 
+    ArrayList<Post> news=new ArrayList<>();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,7 +48,7 @@ public class HomeFragment extends Fragment {
                         User poster;
                         Album album_p;
                         Song song_p;
-                        ArrayList<Post> news=new ArrayList<>();
+
                         ListView  news_lv;
                         PostAdapter PA;
                         news_lv=myView.findViewById(R.id.news_lv);
@@ -61,8 +65,15 @@ public class HomeFragment extends Fragment {
                     }
                 }));
 
+        final EditText search_et=myView.findViewById(R.id.search_et);
 
-
+        ImageButton search_ib=myView.findViewById(R.id.search_ib);
+        search_ib.setOnClickListener(v -> {
+            ArrayList<Post> news_search=  news.stream().filter(p->p.getSong().getTitle().contains(search_et.getText())).collect(Collectors.toCollection(ArrayList::new));
+          PostAdapter  PA = new PostAdapter(Objects.requireNonNull(getContext()),R.id.news_lv,news_search);
+          ListView  news_lv=myView.findViewById(R.id.news_lv);
+          news_lv.setAdapter(PA);
+        });
 
 
 

@@ -51,7 +51,7 @@ public class FavoritesFragment extends Fragment {
 
                 for (int i = 0; i < n; ++i) {
                     JSONObject post = posts_data.getJSONObject(i);
-                    models.add(new Model(R.drawable.brochure, post.getString("title"), post.getString("artist")));
+                    models.add(new Model(R.drawable.brochure, post.getString("title"), post.getString("name")));
                 }
                 favoritesPagerAdapter= new FavoritesPagerAdapter(models,getContext());
                 viewPager.setAdapter(favoritesPagerAdapter);

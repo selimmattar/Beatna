@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
     >
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search.... "
+        android:textColorHint="#000"
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:id="@+id/search_et"/>
+
+    <ImageButton
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/search"
+        android:layout_alignEnd="@+id/search_et"
+        android:id="@+id/search_ib"
+        />
+
 <ListView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/news_lv"
-    android:layout_marginTop="20dp"
     android:background="#eae8e8"
+    android:layout_below="@id/search_et"
     >
 
 </ListView>
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
