@@ -114,10 +114,5 @@
             android:textColor="#918c8c"
             android:textSize="10sp" />
 
-
-
-
-
-
     </RelativeLayout>
 </RelativeLayout>

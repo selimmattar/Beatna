@@ -5,8 +5,11 @@ import android.os.Bundle;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +27,7 @@ import io.reactivex.schedulers.Schedulers;
 
 
 public class HomeFragment extends Fragment {
+
 
     @Nullable
     @Override
@@ -51,7 +55,7 @@ public class HomeFragment extends Fragment {
                         for (int i = 0; i < n; ++i) {
                             JSONObject post=posts_data.getJSONObject(i);
                             poster=new User(post.getString("unique_id"),post.getString("name"),post.getString("email"),post.getInt("role"));
-                            song_p= new Song(post.getInt("song_id"),post.getString("title"),poster);
+                            song_p= new Song(post.getInt("song_id"),post.getString("title"),poster,post.getString("song_mood"),post.getString("song_category"));
                             news.add(new Post(poster,song_p,post.getString("created_at")));
                             //   Toast.makeText(getContext(),post.getString("artist"),Toast.LENGTH_SHORT).show();
                         }
@@ -61,19 +65,11 @@ public class HomeFragment extends Fragment {
                     }
                 }));
 
-
-
-
-
-
         return myView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
-
-
     }
     @Override
     public void onDestroyView() {

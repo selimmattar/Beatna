@@ -20,6 +20,7 @@ import org.json.JSONArray
 class PostAdapter(context: Context, resource: Int, objects: MutableList<Post>) : ArrayAdapter<Post>(context, resource, objects) {
     val myAPI = MainActivity.retrofit!!.create(NodeJS::class.java)
     val CD = CompositeDisposable()
+    val myDb= DatabaseHelper(context)
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view :View?=null
 
@@ -35,7 +36,10 @@ class PostAdapter(context: Context, resource: Int, objects: MutableList<Post>) :
         Picasso.with(context).load(imageUri).transform(CircleTransform()).into(profile_pic)
         Picasso.with(context).load(SongimageUri).resize(1200,500).centerCrop().into(song_pic)
         view?.findViewById<ImageButton>(R.id.playpost_imgb)!!.setOnClickListener{
-        getAlbumSongs(getItem(position).song.id,position)
+        //getAlbumSongs(getItem(position).song.id,position)
+            //addMoodCategoryLite(position)
+            displayMoodCategoryLite()
+
         }
         return view!!
     }
@@ -51,7 +55,7 @@ CD.add(myAPI.getAlbumSongsBySongId(id)
             for (i in 0 until n) {
                 val post =songs_data.getJSONObject(i)
                val artist = User(post.getString("unique_id"), post.getString("name"),"",1)
-               val song = Song(post.getInt("song_id"), post.getString("song_title"), artist)
+               val song = Song(post.getInt("song_id"), post.getString("song_title"), artist,post.getString("song_mood"),post.getString("song_category"))
                 songs.add(song)
 
             }
@@ -63,13 +67,18 @@ CD.add(myAPI.getAlbumSongsBySongId(id)
             val song_ids=ArrayList<Int>()
             val artist_uids=ArrayList<String>()
             val artist_names=ArrayList<String>()
+            val song_moods=ArrayList<String>()
+            val song_categories=ArrayList<String>()
             album.songs.forEach{
                 song_titles.add(it.title)
                 song_ids.add(it.id)
                 artist_uids.add(it.artist.uid)
                 artist_names.add(it.artist.name)
+                song_moods.add(it.mood)
+                song_categories.add(it.category)
             }
-
+            bundle.putStringArrayList("song_categories",song_categories)
+            bundle.putStringArrayList("song_moods",song_moods)
             bundle.putStringArrayList("song_titles",song_titles)
             bundle.putIntegerArrayList("song_ids",song_ids)
             bundle.putStringArrayList("artist_uids",artist_uids)
@@ -83,7 +92,27 @@ CD.add(myAPI.getAlbumSongsBySongId(id)
 
             manager.beginTransaction().replace(R.id.fragment_container,MPF!!).addToBackStack(null).commit()
         })
-
 }
 
+    private fun  addMoodCategoryLite(position:Int){
+        val isInserted=myDb.insertData(getItem(position).song.mood,getItem(position).song.category)
+            if(isInserted==true)
+                println("true")
+            else
+                println("false")
+
+    }
+    private fun displayMoodCategoryLite()
+    {
+        val res = myDb.bestMood
+        if(res.count==0)
+            println("no data")
+        val buffer=StringBuffer()
+        while(res.moveToNext())
+        {
+            buffer.append("\n mood:"+res.getString(0)+"\n")
+            buffer.append("\n occ:"+res.getString(1)+"\n")
+        }
+        println("data:"+buffer.toString())
+    }
 }

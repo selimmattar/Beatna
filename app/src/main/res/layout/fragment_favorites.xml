@@ -1,16 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/whityWhite">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.mporject.interns.beatna.sfuiTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Created for you"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:id="@+id/txtForYou"
+            android:textColor="#000"
+            android:layout_centerInParent="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.mporject.interns.beatna.sfproTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The more you listen,"
+            android:textSize="10dp"
+            android:textStyle="italic"
+            android:textColor="#000"
+            android:layout_marginTop="75dp"
+            android:layout_centerInParent="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.mporject.interns.beatna.sfproTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="the more the recommendations improve."
+            android:textSize="10dp"
+            android:textStyle="italic"
+            android:textColor="#000"
+            android:gravity="center"
+            android:layout_marginTop="95dp"
+            android:layout_centerInParent="true"/>
+        </RelativeLayout>
+        <com.mporject.interns.beatna.sfuiTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your favorite songs"
+            android:layout_marginTop="80dp"
+            android:textColor="@color/greyyy"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="40dp"/>
+
+    </FrameLayout>
+
+    <android.support.v4.view.ViewPager
+        android:foregroundGravity="center"
+        android:id="@+id/viewPagerFavoris2"
+        android:layout_centerInParent="true"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:clipToPadding="false"
+        android:background="@color/whityWhite" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/whityWhite"
+        >
+        <com.mporject.interns.beatna.sfuiTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recommended songs"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/greyyy"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+    </FrameLayout>
     <android.support.v4.view.ViewPager
         android:foregroundGravity="center"
         android:id="@+id/viewPagerFavoris"
         android:layout_centerInParent="true"
         android:overScrollMode="never"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="200dp"
+        android:clipToPadding="false"
+        android:background="@color/whityWhite" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/whityWhite"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <com.mporject.interns.beatna.sfuiTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/greyyy"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:id="@+id/txtFirstCategoryForYou"/>
+        <com.mporject.interns.beatna.sfuiTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" for you"
+            android:textColor="@color/greyyy"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+        </LinearLayout>
+    </FrameLayout>
+    <android.support.v4.view.ViewPager
+        android:foregroundGravity="center"
+        android:id="@+id/viewPagerFavoris3"
+        android:layout_centerInParent="true"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:clipToPadding="false"
+        android:background="@color/whityWhite" />
+</LinearLayout>
 
-
-</RelativeLayout>
+</ScrollView>

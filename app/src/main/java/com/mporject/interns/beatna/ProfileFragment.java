@@ -32,6 +32,68 @@ public class ProfileFragment extends Fragment {
         TextView txtProfilePost= myView.findViewById(R.id.txtPostsProfile);
         TextView txtProfileFollowers= myView.findViewById(R.id.txtFollowersProfile);
         TextView txtProfileFollowing= myView.findViewById(R.id.txtFollowingProfile);
+        final TextView txtCountPosts = myView.findViewById(R.id.txtProfileCountPosts);
+        final TextView txtCountFollowers = myView.findViewById(R.id.txtProfileCountFollowers);
+        final TextView txtCountFollowing = myView.findViewById(R.id.txtProfileCountFollowing);
+        NodeJS myAPI=MainActivity.Companion.getRetrofit().create(NodeJS.class);
+        CompositeDisposable CD = new CompositeDisposable();
+
+        //count posts
+        CD.add(myAPI.getCountUserPosts("e5a618f9-6c21-419d-822b-5c093b037c01")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        final JSONArray followers_data = new JSONArray(s);
+                        final int n = followers_data.length();
+
+                        for (int i = 0; i < n; ++i) {
+                            JSONObject follower=followers_data.getJSONObject(i);
+                            txtCountPosts.setText(follower.getString("res"));
+                            System.out.println("name="+follower.getString("res"));
+                            //   Toast.makeText(getContext(),post.getString("artist"),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }));
+
+        //count followers
+        CD.add(myAPI.getCountUserFollowers("e5a618f9-6c21-419d-822b-5c093b037c01")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        final JSONArray followers_data = new JSONArray(s);
+                        final int n = followers_data.length();
+
+                        for (int i = 0; i < n; ++i) {
+                            JSONObject follower=followers_data.getJSONObject(i);
+                            txtCountFollowers.setText(follower.getString("res"));
+                            System.out.println("name="+follower.getString("res"));
+                            //   Toast.makeText(getContext(),post.getString("artist"),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }));
+
+        //count followed
+        CD.add(myAPI.getCountUserFollowed("e5a618f9-6c21-419d-822b-5c093b037c01")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        final JSONArray followers_data = new JSONArray(s);
+                        final int n = followers_data.length();
+
+                        for (int i = 0; i < n; ++i) {
+                            JSONObject follower=followers_data.getJSONObject(i);
+                            txtCountFollowing.setText(follower.getString("res"));
+                            System.out.println("name="+follower.getString("res"));
+                            //   Toast.makeText(getContext(),post.getString("artist"),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }));
 
         txtProfilePost.setOnClickListener(new View.OnClickListener() {
             @Override

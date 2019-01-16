@@ -29,7 +29,7 @@ public class ProfilePostsFragment extends Fragment {
 
         NodeJS myAPI=MainActivity.Companion.getRetrofit().create(NodeJS.class);
         CompositeDisposable CD = new CompositeDisposable();
-        CD.add(myAPI.getPostByIdUser("55a0ca87-42ae-4151-9c9f-80dc1127276c")
+        CD.add(myAPI.getPostByIdUser("e5a618f9-6c21-419d-822b-5c093b037c01")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<String>() {
@@ -45,13 +45,14 @@ public class ProfilePostsFragment extends Fragment {
                         PostAdapter PA;
                         news_lv=myView.findViewById(R.id.userposts_lv);
                         for (int i = 0; i < n; ++i) {
+                            System.out.println("hahaha"+i);
                             JSONObject post=posts_data.getJSONObject(i);
                             poster=new User(post.getString("unique_id"),post.getString("name"),post.getString("email"),post.getInt("role"));
-                            song_p= new Song(post.getInt("song_id"),post.getString("title"),poster);
+                            song_p= new Song(post.getInt("song_id"),post.getString("title"),poster,post.getString("song_mood"),post.getString("song_category"));
                             news.add(new Post(poster,song_p,post.getString("created_at")));
                             //   Toast.makeText(getContext(),post.getString("artist"),Toast.LENGTH_SHORT).show();
                         }
-                        PA = new PostAdapter(Objects.requireNonNull(getContext()),R.id.userposts_lv,news);
+                        PA = new PostAdapter(getContext(),R.id.userposts_lv,news);
                         news_lv.setAdapter(PA);
 
                     }

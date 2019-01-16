@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class FavoritesPagerAdapter extends PagerAdapter {
+public class CategoriesPagerAdapter extends PagerAdapter {
     private List<Model> models;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public FavoritesPagerAdapter(List<Model> models, Context context) {
+    public CategoriesPagerAdapter(List<Model> models, Context context) {
         this.models = models;
         this.context = context;
     }
@@ -39,7 +39,6 @@ public class FavoritesPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         layoutInflater= LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.favoritesitem,container,false);
-
         ImageView imgView;
         TextView title, desc;
 

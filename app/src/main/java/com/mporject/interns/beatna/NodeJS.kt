@@ -42,13 +42,25 @@ interface NodeJS {
     @FormUrlEncoded
     fun getUserFollowers(@Field("id")id:String):Observable<String>
 
+    @POST("getCountUserFollowers")
+    @FormUrlEncoded
+    fun getCountUserFollowers(@Field("id")id:String):Observable<String>
+
     @POST("getUserFollowed")
     @FormUrlEncoded
     fun getUserFollowed(@Field("id")id:String):Observable<String>
 
+    @POST("getCountUserFollowed")
+    @FormUrlEncoded
+    fun getCountUserFollowed(@Field("id")id:String):Observable<String>
+
     @POST("getPostByIdUser")
     @FormUrlEncoded
     fun getPostByIdUser(@Field("id")id:String):Observable<String>
+
+    @POST("getCountUserPosts")
+    @FormUrlEncoded
+    fun getCountUserPosts(@Field("id")id:String):Observable<String>
 
     @POST("getUserFavs")
     @FormUrlEncoded
@@ -57,4 +69,13 @@ interface NodeJS {
     @POST("getMoodPlaylist")
     @FormUrlEncoded
     fun getMoodPlaylist(@Field("mood")mood:String):Observable<String>
+
+    @POST("getSongsThreeBestMoods")
+    @FormUrlEncoded
+    fun getSongsThreeBestMoods(@Field("mood")mood:String,@Field("limit")limit:Int):Observable<String>
+
+    @POST("getSongsThreeBestCategories")
+    @FormUrlEncoded
+    fun getSongsThreeBestCategories(@Field("category")category:String):Observable<String>
+
 }

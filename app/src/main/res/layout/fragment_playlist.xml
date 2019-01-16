@@ -12,15 +12,16 @@
         android:layout_weight="2"
         android:layout_width="match_parent"
         android:layout_height="0dp">
-        <TextView
+        <com.mporject.interns.beatna.sfuiTextView
             android:id="@+id/textGrid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="What's your mood ?"
-            android:textSize="34sp"
+            android:textStyle="bold"
+            android:textSize="35dp"
             android:textColor="#000"
             android:layout_marginTop="25dp"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="20dp"/>
     </RelativeLayout>
 
     <GridLayout
@@ -54,7 +55,7 @@
 
             <ImageView
                 android:id="@+id/imgChill"
-                android:src="@drawable/chill"
+                android:src="@drawable/relax"
                 android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

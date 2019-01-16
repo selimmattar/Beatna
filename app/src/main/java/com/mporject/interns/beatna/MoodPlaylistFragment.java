@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,9 +37,18 @@ public class MoodPlaylistFragment extends Fragment {
         final ArrayList<String> album=new ArrayList<>();
         ImageView imgPlaylist= myView.findViewById(R.id.imgAlbum);
         TextView txtPlaylistName= myView.findViewById(R.id.txtAlbumName);
+        ImageButton imgBack=myView.findViewById(R.id.imgBtnBackPlaylist);
+
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //PlaylistFragment pf=new PlaylistFragment();
+                getFragmentManager().popBackStackImmediate();
+            }
+        });
 
         if(getArguments().getString("mood")=="Chill")
-        imgPlaylist.setImageResource(R.drawable.chill);
+        imgPlaylist.setImageResource(R.drawable.relax);
         else if(getArguments().getString("mood")=="Sad")
             imgPlaylist.setImageResource(R.drawable.sad);
         else if(getArguments().getString("mood")=="Happy")

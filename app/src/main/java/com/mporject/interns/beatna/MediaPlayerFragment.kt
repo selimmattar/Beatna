@@ -27,12 +27,14 @@ class MediaPlayerFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        val song_moods=arguments!!.getStringArrayList("song_moods")
+        val song_categories=arguments!!.getStringArrayList("song_categories")
         val song_ids=arguments!!.getIntegerArrayList("song_ids")
         val song_titles=arguments!!.getStringArrayList("song_titles")
         val artist_uids=arguments!!.getStringArrayList("artist_uids")
         val artist_names=arguments!!.getStringArrayList("artist_names")
         for(i in 0 until song_ids.size)
-            playlist.add(Song(song_ids.get(i),song_titles.get(i),User(artist_uids.get(i),artist_names.get(i),"",1)))
+            playlist.add(Song(song_ids.get(i),song_titles.get(i),User(artist_uids.get(i),artist_names.get(i),"",1),song_moods.get(i),song_categories.get(i)))
         currentIndex=arguments!!.getInt("currentIndex")
         album_title=arguments!!.getString("album_title")
         runnable = Runnable {

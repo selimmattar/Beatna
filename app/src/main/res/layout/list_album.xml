@@ -1,59 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-   android:weightSum="10" >
+<LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="10" >
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1"
-    android:orientation="horizontal"
-    >
-    <TextView
-        android:id="@+id/txtOrder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="normal"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/greyyy"
-        android:textSize="20dp"
-        android:layout_marginLeft="10dp"
-        />
-</LinearLayout>
+    android:layout_marginStart="20dp">
+    <com.mporject.interns.beatna.segoeuiTextView
+            android:id="@+id/txtOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="normal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/greyyy"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="8"
-        android:orientation="horizontal"
-        android:layout_marginStart="5dp" >
-
-    <TextView
-        android:id="@+id/txtAlbum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textStyle="normal"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:textColor="#000"/>
+        android:paddingLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:paddingStart="10dp">
+    <com.mporject.interns.beatna.segoeuiTextView
+            android:id="@+id/txtAlbum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textAlignment="textStart"
+            />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_marginStart="0dp">
-    <TextView
+        android:layout_marginRight="20dp">
+    <com.mporject.interns.beatna.segoeuiTextView
+            android:layout_weight="1"
             android:id="@+id/txtMinutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textStyle="normal"
+            android:textSize="20dp"
+            android:textStyle="normal"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:textColor="@color/greyyy"
-        android:layout_marginRight="0dp"
-        />
+            android:textAlignment="textEnd"/>
     </LinearLayout>
 </LinearLayout>
