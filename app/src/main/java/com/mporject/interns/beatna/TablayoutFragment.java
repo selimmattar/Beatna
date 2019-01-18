@@ -35,11 +35,11 @@ public class TablayoutFragment extends Fragment {
         tabLayout=myView.findViewById(R.id.tablayoutMenu);
         //appBarLayout=myView.findViewById(R.id.appbarMenu);
         viewPager=myView.findViewById(R.id.viewPagerMenu);
-        MenuViewPagerAdapter adapter= new MenuViewPagerAdapter(getFragmentManager());
+        MenuViewPagerAdapter adapter= new MenuViewPagerAdapter(getChildFragmentManager());
 
         adapter.addFragment(new HomeFragment(),"Menu");
         adapter.addFragment(new DiscussFragment(),"Discuss");
-        adapter.addFragment(new NotificationsFragment(),"Notifications");
+
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

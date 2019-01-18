@@ -36,12 +36,12 @@ class PostAdapter(context: Context, resource: Int, objects: MutableList<Post>) :
         Picasso.with(context).load(imageUri).transform(CircleTransform()).into(profile_pic)
         Picasso.with(context).load(SongimageUri).resize(1200,500).centerCrop().into(song_pic)
         view?.findViewById<ImageButton>(R.id.playpost_imgb)!!.setOnClickListener{
-        //getAlbumSongs(getItem(position).song.id,position)
-            //addMoodCategoryLite(position)
+        getAlbumSongs(getItem(position).song.id,position)
+            addMoodCategoryLite(position)
             displayMoodCategoryLite()
 
         }
-        profile_pic!!.setOnClickListener(View.OnClickListener {
+        profile_pic!!.setOnClickListener{
             val profileFragment = AllProfileFragment()
             val bundle = Bundle()
             bundle.putString("uniqueId", getItem(position).poster.uid)
@@ -51,7 +51,7 @@ class PostAdapter(context: Context, resource: Int, objects: MutableList<Post>) :
             profileFragment.arguments = bundle
             val manager = (context as AppCompatActivity).supportFragmentManager
             manager.beginTransaction().replace(R.id.fragment_container, profileFragment).addToBackStack(null).commit()
-        })
+        }
         return view!!
     }
 private fun  getAlbumSongs(id:Int,position:Int){

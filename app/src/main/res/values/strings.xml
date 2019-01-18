@@ -2,5 +2,27 @@
     <string name="app_name">Beatna</string>
     <string name="Sign_in">Sign in</string>
     <string name="Sign_up">Sign up</string>
+    <string name="Mood">Mood</string>
+    <string-array name="entries_mood">
+        <item>Happy</item>
+        <item>Sad</item>
+        <item>Motivational</item>
+        <item>Studying</item>
+        <item>Gaming</item>
+        <item>Chill</item>
+        <item>Party</item>
 
+
+    </string-array>
+    <string-array name="entries_cat">
+        <item>Hip-Hop</item>
+        <item>Jazz</item>
+        <item>RnB</item>
+        <item>Rock</item>
+        <item>Afro</item>
+        <item>Romance</item>
+        <item>Electro</item>
+
+
+    </string-array>
 </resources>

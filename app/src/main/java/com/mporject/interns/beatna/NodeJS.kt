@@ -1,12 +1,11 @@
 package com.mporject.interns.beatna
 
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.observers.DisposableObserver
-import retrofit2.http.Field
-import retrofit2.http.GET
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.http.*
 
 interface NodeJS {
     @POST("login")
@@ -18,7 +17,8 @@ interface NodeJS {
     fun registerUser(@Field("name")name:String,@Field("email")email:String,@Field("password")password:String) : Observable<String>
 
     @POST("post_getAll")
-    fun post_getAll() : Observable<String>
+    @FormUrlEncoded
+    fun post_getAll(@Field("uid")uid:String) : Observable<String>
 
     @POST("displaySongs")
     fun displaySongs() : Observable<String>
@@ -104,4 +104,20 @@ interface NodeJS {
     @POST("deleteAbonnement")
     @FormUrlEncoded
     fun deleteAbonnement(@Field("follower")follower:String,@Field("followed")followed:String):Observable<String>
+
+    @POST("getAlbumInfoByUserId")
+    @FormUrlEncoded
+    fun getAlbumInfoByUserId(@Field("id")id:String) : Observable<String>
+
+    @POST("uploadSong")
+    @Multipart
+    fun UploadSong(@Part("username")username:RequestBody,@Part("album")album:RequestBody,@Part("songName")songName:RequestBody,@Part song : MultipartBody.Part) : Observable<String>
+
+    @POST("AddSong")
+    @FormUrlEncoded
+    fun AddSong(@Field("songtitle")songtitle : String,@Field("albumtitle")albumtitle : String,@Field("uid")uid : String,@Field("category")category : String,@Field("mood")mood : String):Observable<String>
+
+    @POST("AddPost")
+    @FormUrlEncoded
+    fun AddPost(@Field("uid")uid : String,@Field("songId")song : Int,@Field("created_at")created_at : String):Observable<String>
 }

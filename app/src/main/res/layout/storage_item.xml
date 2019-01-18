@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="85dp"
+
+    android:background="#FFF"
+    >
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+    </ScrollView>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Song name"
+    android:textColor="#000"
+    android:textSize="20sp"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="20dp"
+    android:id="@+id/storageItemName_tv"
+    />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/storageItemName_tv"
+        android:id="@+id/addFile_btn"
+        android:text="Add"/>
+</RelativeLayout>

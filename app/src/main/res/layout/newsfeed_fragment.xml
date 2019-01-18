@@ -30,4 +30,14 @@
     >
 
 </ListView>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/search_et"
+        android:layout_alignBottom="@id/news_lv"
+        android:src="@drawable/ic_add_white_24dp"
+        android:backgroundTint="#ff6666"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/Add_FB"/>
 </RelativeLayout>

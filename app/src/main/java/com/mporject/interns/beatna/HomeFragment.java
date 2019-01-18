@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,11 +35,16 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View myView=inflater.inflate(R.layout.newsfeed_fragment,container,false);
-
-
+        Session session= new Session(getContext());
+        FloatingActionButton Add_FB=myView.findViewById(R.id.Add_FB);
+Add_FB.setOnClickListener(v -> {
+    FragmentManager manager = getFragmentManager();
+UploadSongFragment USF= new UploadSongFragment();
+    manager.beginTransaction().replace(R.id.fragment_container,USF).addToBackStack(null).commit();
+});
         NodeJS myAPI=MainActivity.Companion.getRetrofit().create(NodeJS.class);
         CompositeDisposable CD = new CompositeDisposable();
-        CD.add(myAPI.post_getAll()
+        CD.add(myAPI.post_getAll(session.getUniqueId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<String>() {
