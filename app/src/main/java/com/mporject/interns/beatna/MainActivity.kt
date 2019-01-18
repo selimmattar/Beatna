@@ -13,6 +13,7 @@ import com.facebook.stetho.Stetho
 class MainActivity : AppCompatActivity() {
 
 
+
     companion object {
     val retrofit =RetrofitClient.GetInstance()
 }
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+        
         supportFragmentManager.beginTransaction().add(R.id.fragment_container,TablayoutFragment()).commit()
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setOnNavigationItemSelectedListener(navListener)

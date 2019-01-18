@@ -29,7 +29,7 @@ public class ProfilePostsFragment extends Fragment {
 
         NodeJS myAPI=MainActivity.Companion.getRetrofit().create(NodeJS.class);
         CompositeDisposable CD = new CompositeDisposable();
-        CD.add(myAPI.getPostByIdUser("e5a618f9-6c21-419d-822b-5c093b037c01")
+        CD.add(myAPI.getPostByIdUser(getArguments().getString("uniqueId"))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<String>() {

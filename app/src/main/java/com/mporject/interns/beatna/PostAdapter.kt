@@ -41,6 +41,17 @@ class PostAdapter(context: Context, resource: Int, objects: MutableList<Post>) :
             displayMoodCategoryLite()
 
         }
+        profile_pic!!.setOnClickListener(View.OnClickListener {
+            val profileFragment = AllProfileFragment()
+            val bundle = Bundle()
+            bundle.putString("uniqueId", getItem(position).poster.uid)
+            bundle.putString("userName",getItem(position).poster.name)
+            bundle.putString("userEmail",getItem(position).poster.email)
+
+            profileFragment.arguments = bundle
+            val manager = (context as AppCompatActivity).supportFragmentManager
+            manager.beginTransaction().replace(R.id.fragment_container, profileFragment).addToBackStack(null).commit()
+        })
         return view!!
     }
 private fun  getAlbumSongs(id:Int,position:Int){

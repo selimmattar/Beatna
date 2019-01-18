@@ -45,4 +45,5 @@ public class TablayoutFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
         return myView;
     }
+
 }

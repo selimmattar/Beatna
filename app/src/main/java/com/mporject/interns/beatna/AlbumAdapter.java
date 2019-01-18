@@ -41,7 +41,6 @@ public class AlbumAdapter extends ArrayAdapter<String> {
         tvAlbumName.setText(tracks.get(position));
         tvOrder.setText(""+(position+1));
         tvMinutes.setText("2:16");
-
        /* tvAlbumName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

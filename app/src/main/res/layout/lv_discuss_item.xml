@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/whityWhite">
+    <ImageView
+        android:id="@+id/imgCommentItem"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/blue_circle"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_reply"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/whityWhite"/>
+    <TextView
+        android:id="@+id/txtUserCommentItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UserName"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#000"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtCreatedCommentItem"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="35dp"
+        android:text="2 hrs ago"
+        android:textColor="@color/greyyy"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtCommentaireCommentItem"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
+        android:text="you've never loved me at all so"
+        android:singleLine="true"
+        android:ellipsize="end"
+       android:textColor="#000" />
+</RelativeLayout>

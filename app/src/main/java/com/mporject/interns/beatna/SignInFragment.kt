@@ -12,16 +12,20 @@ import android.widget.Toast
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import org.json.JSONArray
 
 class SignInFragment : Fragment() {
     var myAPI : NodeJS? = null
     var compositeDisposable : CompositeDisposable = CompositeDisposable()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.signin,container,false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var userSession = Session(context)
+
         myAPI= MainActivity.retrofit?.create(NodeJS::class.java)
         val nextbtn = view!!.findViewById<Button>(R.id.nextbtn)
         val signupbtn=view!!.findViewById<Button>(R.id.signupbtn)
@@ -34,6 +38,8 @@ class SignInFragment : Fragment() {
         }
         nextbtn?.setOnClickListener {
             View: View -> loginUser(login_et.text.toString(),pwd_et.text.toString())
+            userSession.userName= login_et.text.toString()
+
         }
     }
     fun loginUser(em:String,pwd:String){
@@ -42,8 +48,13 @@ class SignInFragment : Fragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe{
                     val intent = Intent(activity, MainActivity::class.java)
+                    var userSession = Session(context)
 
                   if(!(it.equals("Wrong password") || it.equals("User non existant"))) {
+                      val posts_data = JSONArray(it)
+                      val post = posts_data.getJSONObject(0)
+                      val uniqueId = post.getString("unique_id")
+                      userSession.uniqueId=uniqueId
                       startActivity(intent)
                   }
                     else  Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()

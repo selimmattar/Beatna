@@ -78,4 +78,30 @@ interface NodeJS {
     @FormUrlEncoded
     fun getSongsThreeBestCategories(@Field("category")category:String):Observable<String>
 
+    @POST("getAllDiscussions")
+    fun getAllDiscussions():Observable<String>
+
+    @POST("getCommentsByDiscussion")
+    @FormUrlEncoded
+    fun getCommentsByDiscussion(@Field("id")id:Int):Observable<String>
+
+    @POST("addComment")
+    @FormUrlEncoded
+    fun addComment(@Field("discussionComment")discussionComment:Int,@Field("idUser")idUser:String,@Field("contentComment")contentComment:String) : Observable<String>
+
+    @POST("getUserInfos")
+    @FormUrlEncoded
+    fun getUserInfos(@Field("id")id:String):Observable<String>
+
+    @POST("checkAbonnement")
+    @FormUrlEncoded
+    fun checkAbonnement(@Field("follower")follower:String,@Field("followed")followed:String):Observable<String>
+
+    @POST("addAbonnement")
+    @FormUrlEncoded
+    fun addAbonnement(@Field("follower")follower:String,@Field("followed")followed:String):Observable<String>
+
+    @POST("deleteAbonnement")
+    @FormUrlEncoded
+    fun deleteAbonnement(@Field("follower")follower:String,@Field("followed")followed:String):Observable<String>
 }
