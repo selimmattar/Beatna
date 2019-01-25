@@ -7,6 +7,5 @@
         android:layout_height="match_parent"
         android:id="@+id/storage_lv"
         android:background="#eae8e8"
-        android:layout_below="@id/search_et"
         />
 </android.support.constraint.ConstraintLayout>

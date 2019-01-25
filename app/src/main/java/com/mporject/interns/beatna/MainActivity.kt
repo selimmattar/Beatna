@@ -1,12 +1,14 @@
 package com.mporject.interns.beatna
 
 import android.content.Context
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.view.View
+import android.widget.Button
 import com.facebook.stetho.Stetho
 
 
@@ -27,6 +29,13 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setOnNavigationItemSelectedListener(navListener)
         Stetho.initializeWithDefaults(this)
         var myDb= DatabaseHelper(this)
+        findViewById<Button>(R.id.logout_btn).setOnClickListener{
+            Session(this).userName=""
+            Session(this).uniqueId=""
+            val LoginIntent = Intent(this, LoginActivity::class.java)
+            startActivity(LoginIntent)
+            finish()
+        }
     }
 
 
@@ -42,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         true
 
     }
+
 
 
 }

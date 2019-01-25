@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="185dp"
+    android:layout_height="250dp"
     android:outlineAmbientShadowColor="@color/av_dark_blue"
     android:layout_marginBottom="10dp"
-    android:background="#eae8e8"
+    android:background="#ffffff"
+    android:layout_marginTop="20dp"
     >
 
     <RelativeLayout
+        android:id="@+id/song_rl"
         android:layout_width="match_parent"
         android:layout_height="175dp"
         android:layout_marginTop="5dp"
@@ -60,27 +62,8 @@
             android:background="@drawable/play_post"
             android:alpha="0.4"
             android:id="@+id/playpost_imgb"/>
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:scaleType="fitCenter"
-            android:layout_toLeftOf="@id/playpost_imgb"
-            android:layout_alignTop="@id/playpost_imgb"
-            android:layout_marginEnd="20dp"
-            android:alpha="0.3"
-            android:background="@drawable/love_post"
-            android:id="@+id/lovepost_imgb"
-            />
-   <ImageButton
-    android:layout_width="40dp"
-    android:layout_height="40dp"
-    android:layout_toRightOf="@id/playpost_imgb"
-    android:layout_alignTop="@id/playpost_imgb"
-    android:layout_marginStart="20dp"
-    android:scaleType="fitCenter"
-    android:alpha="0.3"
-    android:background="@drawable/share_post"
-    android:id="@+id/sharepost_imgb"/>
+
+
         <ImageView
             android:id="@+id/profile_img"
             android:layout_width="50dp"
@@ -115,4 +98,26 @@
             android:textSize="10sp" />
 
     </RelativeLayout>
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="fitCenter"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@id/song_rl"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="5dp"
+        android:background="@mipmap/love_post_black_foreground"
+        android:id="@+id/lovepost_imgb"
+        />
+
+    <ImageButton
+        android:id="@+id/sharepost_imgb"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/song_rl"
+        android:layout_alignTop="@id/lovepost_imgb"
+        android:layout_marginEnd="100dp"
+        android:layout_alignParentEnd="true"
+        android:background="@mipmap/share_post_foreground"
+        android:scaleType="fitCenter" />
 </RelativeLayout>

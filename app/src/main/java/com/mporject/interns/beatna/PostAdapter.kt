@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import android.support.v7.app.AppCompatActivity
 import android.graphics.BitmapFactory
 import android.graphics.Bitmap
+import android.support.annotation.MainThread
 import android.widget.*
 import java.net.URL
 import com.squareup.picasso.Picasso
+import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -51,6 +53,25 @@ class PostAdapter(context: Context, resource: Int, objects: MutableList<Post>) :
             profileFragment.arguments = bundle
             val manager = (context as AppCompatActivity).supportFragmentManager
             manager.beginTransaction().replace(R.id.fragment_container, profileFragment).addToBackStack(null).commit()
+        }
+        val lovepost_imgb=view.findViewById<ImageButton>(R.id.lovepost_imgb)
+        CD.add(myAPI.AddPostLike(Session(context).uniqueId,getItem(position).id,"get")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe{
+                     if(it.equals("found"))
+                        lovepost_imgb.setImageResource(R.mipmap.love_post_red_foreground)
+                })
+        lovepost_imgb.setOnClickListener{
+        CD.add(myAPI.AddPostLike(Session(context).uniqueId,getItem(position).id,"like")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe{
+                    if(it.equals("deleted"))
+                        lovepost_imgb.setImageResource(R.mipmap.love_post_black_foreground)
+                    else if(it.equals("success"))
+                        lovepost_imgb.setImageResource(R.mipmap.love_post_red_foreground)
+                })
         }
         return view!!
     }

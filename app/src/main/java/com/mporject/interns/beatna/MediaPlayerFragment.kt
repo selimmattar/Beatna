@@ -54,7 +54,7 @@ class MediaPlayerFragment : Fragment() {
         mp.prepare()
         mp.start()
         handler.postDelayed(runnable,1000)
-         mySeekBar=myView.findViewById<ArcSeekBar>(R.id.seekArc)
+         mySeekBar=myView.findViewById(R.id.seekArc)
      
         mySeekBar!!.maxProgress=mp.duration
 
@@ -86,7 +86,7 @@ class MediaPlayerFragment : Fragment() {
                         e.printStackTrace()
                     }
                 }else{
-                    mp.seekTo(mp_length)
+                    handler.postDelayed(runnable,1000)
                     mp.start()
                 }
             }else {
@@ -126,16 +126,19 @@ class MediaPlayerFragment : Fragment() {
         }
     }
     fun playSong(){
-        if(album_title.equals(""))
-            album_title="Singles"
         mp.setDataSource("http://10.0.2.2/Server/"+playlist.get(currentIndex).artist.name+"/"+
                 album_title+"/"+playlist.get(currentIndex).title+".mp3")
         mp.prepareAsync()
         mp.setOnPreparedListener {
+            mp.seekTo(mp_length)
             it.start()
             mySeekBar!!.maxProgress=mp.duration
-            handler.postDelayed(runnable,1000)
             mpIsEmpty=false
         }
+        runnable = Runnable {
+            mySeekBar?.progress=mp.currentPosition
+            handler.postDelayed(runnable,1000)
+        }
+
     }
 }

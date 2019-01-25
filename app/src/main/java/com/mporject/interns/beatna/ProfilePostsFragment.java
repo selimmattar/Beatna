@@ -49,7 +49,7 @@ public class ProfilePostsFragment extends Fragment {
                             JSONObject post=posts_data.getJSONObject(i);
                             poster=new User(post.getString("unique_id"),post.getString("name"),post.getString("email"),post.getInt("role"));
                             song_p= new Song(post.getInt("song_id"),post.getString("title"),poster,post.getString("song_mood"),post.getString("song_category"));
-                            news.add(new Post(poster,song_p,post.getString("created_at")));
+                            news.add(new Post(post.getInt("id"),poster,song_p,post.getString("created_at")));
                             //   Toast.makeText(getContext(),post.getString("artist"),Toast.LENGTH_SHORT).show();
                         }
                         PA = new PostAdapter(getContext(),R.id.userposts_lv,news);

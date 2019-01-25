@@ -8,6 +8,7 @@
         android:layout_height="match_parent"
         android:src="@drawable/maxresdefault"
         android:scaleType="centerCrop"
+        android:id="@+id/mpSongImg_iv"
         android:alpha="0.8"
         />
 

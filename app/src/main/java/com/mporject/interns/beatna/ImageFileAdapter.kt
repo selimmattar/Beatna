@@ -10,10 +10,10 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 
-class FileAdapter(context: Context, resource: Int, objects: MutableList<FileToUpload>) : ArrayAdapter<FileToUpload>(context, resource, objects) {
-
+class ImageFileAdapter(context: Context, resource: Int, objects: MutableList<FileToUpload>) : ArrayAdapter<FileToUpload>(context, resource, objects) {
+var imgsf=imageStorageFragment()
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var view :View?=null
+        var view : View?=null
 
         val inflater = LayoutInflater.from(context)
 
@@ -21,13 +21,15 @@ class FileAdapter(context: Context, resource: Int, objects: MutableList<FileToUp
         view?.findViewById<TextView>(R.id.storageItemName_tv)?.text=getItem(position).name
         view?.findViewById<Button>(R.id.addFile_btn)?.setOnClickListener{
             val bundle= Bundle()
-            bundle.putString("songName",getItem(position).name)
-            bundle.putString("songUri",getItem(position).path)
+            bundle.putString("imgName",getItem(position).name)
+            bundle.putString("imgUri",getItem(position).path)
+            bundle.putString("songName",imgsf.arguments!!.getString("songName"))
+            bundle.putString("songUri",imgsf.arguments!!.getString("songUri"))
+            val usf=UploadSongFragment()
 
             val manager = (context as AppCompatActivity).supportFragmentManager
-            val sf=imageStorageFragment()
-            sf.arguments=bundle
-            manager.beginTransaction().replace(R.id.fragment_container,sf!!).addToBackStack(null).commit()
+            usf.arguments=bundle
+            manager.beginTransaction().replace(R.id.fragment_container,usf!!).addToBackStack(null).commit()
         }
         return view!!
     }

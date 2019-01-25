@@ -120,4 +120,17 @@ interface NodeJS {
     @POST("AddPost")
     @FormUrlEncoded
     fun AddPost(@Field("uid")uid : String,@Field("songId")song : Int,@Field("created_at")created_at : String):Observable<String>
+
+    @POST("AddAlbum")
+    @FormUrlEncoded
+    fun AddAlbum(@Field("title")title : String,@Field("uid")uid : String,@Field("image")image : String):Observable<String>
+
+    @POST("AddPostLike")
+    @FormUrlEncoded
+    fun AddPostLike(@Field("uid")uid : String,@Field("post")post : Int,@Field("action")action : String):Observable<String>
+
+    @POST("uploadImage")
+    @Multipart
+    fun UploadImage(@Part("username")username:RequestBody,@Part("album")album:RequestBody,@Part image : MultipartBody.Part) : Observable<String>
+
 }
